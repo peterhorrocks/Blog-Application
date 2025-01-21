@@ -1,0 +1,563 @@
+/* LAYOUT Styles */
+
+body {
+    margin: 0;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
+/* Format NAVIGATION BAR and FOOTER*/
+
+nav{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+
+}
+.nav-items {
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.nav-text {
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.nav-sub-text {
+    padding-bottom: 0;
+    width: fit-content;
+}
+.nav-text > a {
+    font-family: "Roboto", sans-serif;
+    font-size: large;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+} 
+.p-nav-text {
+    width: 100%;
+    text-align: center;
+}
+.h3-nav-text {
+    width: 100%;
+    text-align: center;
+}
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Format CONTAINERS and SECTIONS */
+
+.main-body {
+    margin: 0;
+    padding: 0;
+}
+
+/* ALL Pages */
+.container-top {
+    margin-top: 2%;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+/* ** HOME PAGE STYLING ** */
+.hero {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2%;
+    margin-left: 1%;
+    margin-right: 1%;
+    border: solid; border-color: #E76F51; border-width:10px;
+    border-style: dashed;
+    border-radius: 30px;
+}
+.sub-hero-1 {
+    flex: 2;
+    padding: 3%;
+}
+.sub-hero-2 {
+    flex: 1;
+    padding: 3%;
+}
+.feature {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2%;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+.sub-feature {
+    display: flex;
+    flex-direction: row;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 1%;
+    width: 46%;
+}
+.feature-contents-1 {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 1%;
+    max-width: 60%;
+}
+.feature-contents-2 {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 1%;
+    max-width: 30%;
+}
+.container-bottom {
+    display: flex;
+    flex-direction: row;
+    margin-top: 4%;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+.left-panel {
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 70%;
+}
+.right-panel {
+    margin-left: 1%;
+    margin-right: 1%;
+    width:30%;
+}
+/* Post Option 1 */
+.post {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 5%;
+    width:80%;
+}
+.sub-post-1 {
+    margin: 2%;
+    width:60%;
+}
+.sub-post-2 {
+    margin: 1%;
+    width:30%;
+}
+
+/* Post Option 2 */
+.post-1 {
+    margin-bottom: 5%;
+    padding: 2%;
+    width:80%;
+}
+.sub-post-3 {
+    margin: 2%;
+    width:80%;
+}
+.sub-post-4 {
+    margin: 1%;
+    width:80%;
+}
+
+
+
+.about {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15%;
+    padding: 3%;
+    width:100%;
+}
+.right-panel-sub-section {
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+}
+.login {
+    margin-bottom: 15%;
+    padding: 3%;
+    width:100%;
+}
+.create-post {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15%;
+    padding: 3%;
+    width:100%;
+}
+.archive {
+    display: flex;
+    flex-direction: column;
+    padding: 3%;
+    margin-bottom: 15%;
+    width:100%;
+}
+.footer {
+    margin-top: 10%;
+    margin-left: 1%;
+    margin-right: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+.footer-about {
+    margin-top: 1%;
+    margin-left: 1%;
+    margin-right: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+
+/* ** OTHER PAGE STYLING ** */
+
+/* Keep all pages in line with the Home Page Hero section */
+.page-section {
+    margin-left: 1%;
+    margin-right: 1%;
+}
+.page-sub-section {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+/* Styling for ABOUT, CONTACT & ARCHIVE Pages */
+.info-page-section {
+    display: flex;
+    flex-direction: row;
+}
+.info-page-sub-section-1 {
+    margin: 2%;
+    width:30%;
+}
+.info-page-sub-section-2 {
+    margin: 1%;;
+    padding: 2%;
+    width:60%;
+    height: fit-content;
+}
+
+/* Styling for POST page */
+.post-page-sub-section-1 {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    width: 100%;
+}
+.post-page-sub-section-2 {
+    margin: 0;
+    padding: 1%;
+    padding-top: 0;
+    width: 100%;
+}
+.post-page-sub-section-1-image-1 {
+    margin: 2%;
+    width:100%;
+    height: 75%;
+}
+.post-page-sub-section-1-image-2 {
+    margin: 2%;
+    width:100%;
+    height: 75%;
+}
+.credits {
+    margin: 0;
+    margin-top: 10%;
+}
+.credits-sub-section {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1%;
+}
+
+/* Button Sections */
+.form-button-section {
+    display: flex;
+    gap: 1%;
+    margin: 1%;
+}
+.form-button {
+    margin: 1%;
+}
+
+
+
+
+
+
+
+
+@media (min-width: 481px) and (max-width: 768px) {
+
+    .navbar {
+        width: 98%;
+    }
+
+    .hero {
+        display:flex;
+        flex-direction: column;
+        margin-top: 2%;
+        margin-left: 1%;
+        margin-right: 1%;
+        padding: 1%;
+        width: 94%;
+    }
+    .sub-hero-1 {
+        padding: 3%;
+        order: 1;
+        width: 100%;
+    }
+    .sub-hero-2 {
+        padding: 3%;
+        width: 50%;
+    }
+   
+    .feature {
+        display: flex;
+        flex-direction: column;
+        margin-top: 2%;
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+    .sub-feature {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 1%;
+        padding: 1%;
+        width: 100%;
+    }
+    .feature-contents-1 {
+        max-width: 100%;
+        order: 1;
+    }
+    .feature-contents-2 {
+        max-width: 50%;
+    }
+
+    .container-bottom {
+        display: flex;
+        flex-direction: column;
+    }
+    .left-panel {
+        width: 98%;
+    }
+    .right-panel {
+        width: 95%;
+    }
+    .post {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .sub-post-1 {
+        width:100%;
+        order: 1;
+    }
+    .sub-post-2 {
+        width:50%;
+    }
+    .about {
+        width: 98%;
+        margin-bottom: 5%;
+    }
+    .create-post {
+        width: 98%;
+        margin-bottom: 5%;
+    }
+    .archive {
+        width: 98%;
+        margin-bottom: 5%;
+    }
+    .footer {
+        width: 98%;
+    }
+
+    .post-page-sub-section-1 {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+    .post-page-sub-section-1-image-1 {
+        margin: 0;
+        margin-left: 2%;
+        margin-right: 2%;
+        width:50%;
+    }
+    .post-page-sub-section-1-image-2 {
+        margin: 0;
+        margin-left: 2%;
+        margin-right: 2%;
+        width:100%;
+    }
+
+    .info-page-section {
+        display: flex;
+        flex-direction: column;
+    }
+    .info-page-sub-section-1 {
+        width:95%;
+    }
+    .info-page-sub-section-2 {
+        width:95%;
+    }
+
+    .credits {
+        margin-left: 4%;
+        width:95%;
+    
+    }
+}
+
+@media (max-width: 480px) {
+
+    .navbar {
+        width: 98%;
+        margin-bottom: 5%;
+    }
+    .nav-items {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 1%;
+    }
+    .nav-text {
+        padding-bottom: 0;
+        width: fit-content;
+    }
+    .nav-text-1 {
+        order: 1;
+    }
+    
+
+    .hero {
+        display:flex;
+        flex-direction: column;
+        margin-top: 2%;
+        margin-left: 1%;
+        margin-right: 1%;
+        width: 94%;
+    }
+    .sub-hero-1 {
+        padding: 3%;
+        order: 1;
+    }
+    .sub-hero-2 {
+        padding: 3%;
+    }
+   
+    .feature {
+        display: flex;
+        flex-direction: column;
+        margin-top: 2%;
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+    .sub-feature {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 1%;
+        padding: 1%;
+        width: 100%;
+    }
+    .feature-contents-1 {
+        max-width: 100%;
+        order: 1;
+    }
+
+    .container-bottom {
+        display: flex;
+        flex-direction: column;
+    }
+    .left-panel {
+        width: 100%;
+    }
+    .right-panel {
+        width: 100%;
+    }
+
+    .about {
+        width: 94%;
+        margin-bottom: 5%;
+    }
+    .create-post {
+        width: 94%;
+        margin-bottom: 5%;
+    }
+    .archive {
+        width: 94%;
+        margin-bottom: 5%;
+    }
+
+
+
+    .post {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .sub-post-1 {
+        width:100%;
+        order: 1;
+    }
+    .sub-post-2 {
+        width:100%;
+    }
+    .footer {
+        width: 98%;
+    }
+
+    .post-page-sub-section-1 {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+    .post-page-sub-section-1-image-1 {
+        margin: 0;
+        margin-left: 2%;
+        margin-right: 2%;
+        width:50%;
+    }
+    .post-page-sub-section-1-image-2 {
+        margin: 0;
+        margin-left: 2%;
+        margin-right: 2%;
+        width:100%;
+    }
+
+    .info-page-section {
+        display: flex;
+        flex-direction: column;
+    }
+    .info-page-sub-section-1 {
+        width:95%;
+    }
+    .info-page-sub-section-2 {
+        width:95%;
+    }
+
+    .credits {
+        margin-left: 4%;
+        width:95%;    
+    }
+
+    .credits-sub-section {
+        display: flex;
+        flex-direction: column;
+        margin-top: 1%;
+    }
+    .credits-sub-section-classic {
+        display: flex;
+        flex-direction: row;
+        margin-top: 1%;
+    }
+    
+
+    
+}

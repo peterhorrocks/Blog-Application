@@ -1,0 +1,74 @@
+<!-- Add Header -->
+<%- include("partials/header.ejs") %>
+
+
+
+    <div class="container-top">
+
+        <%= console.log("\n** CREATE_POST.EJS **"); %>
+
+        <div class="page-section">
+
+            <div class="page-sub-section">
+
+                <h2>Create a Post</h2>
+
+                <p>To create a Post, please enter the details below.</p>
+
+                <form class="form-create" action="/create_post" method="POST" enctype="multipart/form-data">
+                <!-- <form class="form-create" action="/create_post" method="POST"> -->
+
+                    <!-- Text Replacement-->
+                    <input class="form-input" type="text" name="formPostHeading" placeholder="HEADING"><br><br>
+                    <textarea class="text-area" type="text" name="formPostContents" placeholder="CONTENTS"></textarea> <br><br>
+
+                    <!-- Image Upload-->
+                    <label class="image-upload" for="image">Upload an Image</label>
+                    <input class="image-upload" type="file" id="formPostImage" name="formPostImage" onChange="getoutput()" accept="image/png, image/jpg, image/jpeg" placeholder="image.jpg"><br><br>
+
+
+                    <input class="output-file" id="outputfile" type="hidden" name="outputfile">
+                    <input class="extension" id="extension" type="hidden" name="extension">
+                    
+                    <!-- Button Submit-->
+<!--                    <input class="cancel-button" type="submit" value="CANCEL">
+                    <input class="save-button" type="submit" value="SAVE"> -->
+
+                    <div class="form-button-section">
+                            
+                        <div class="form-button">
+                            <input class="cancel-button" type="submit" value="CANCEL">
+                        </div>
+    
+                        <div class="form-button">
+                            <input class="save-button" type="submit" value="SAVE">
+                        </div>
+
+                    </div>
+
+
+                </form>
+
+                <!-- Access the name of the image file -->
+                <script>
+                    function getFile(filePath) {
+                        return filePath.substr(filePath.lastIndexOf('\\') + 1).split('.')[0];
+                    }
+                    function getoutput() {
+                        outputfile.value = getFile(formPostImage.value);
+                        extension.value = formPostImage.value.split('.')[1];
+                    }
+                </script>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+<!-- Add Footer -->
+<%- include("partials/footer.ejs") %>
+
+

@@ -1,0 +1,111 @@
+<!-- Add Header -->
+<%- include("partials/header.ejs") %>
+
+
+
+<div class="container-top">
+
+    <div class="page-section">
+
+        <div class="page-sub-section">
+
+
+
+            <div class="post-page-sub-section-1">
+
+                <div class="post-page-sub-section-1-image-1">
+
+                    <img class="img-post" src="/images/adverts-old-vintage-advertisements-posters-labels-40.jpg">
+
+                </div>
+
+                <div class="post-page-sub-section-1-image-2">
+
+                    <h2 class="post-heading">A 1950s Blog Post</h2>
+
+                </div>
+
+            </div>
+
+            <div class="post-page-sub-section-2">
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tortor eros, aliquet eu dui id, tincidunt sagittis dolor. Donec tristique felis nec consectetur tempor. Vivamus sit amet aliquam magna, sit amet euismod eros. Etiam non sem mollis, aliquet leo nec, laoreet odio. Pellentesque tristique, mi a aliquam porta, turpis velit cursus nulla, eget blandit leo risus quis ipsum. Integer tempus enim ut libero consectetur, a tristique lacus ultricies. Duis molestie placerat sollicitudin. Nullam nunc dolor, pretium id augue nec, lobortis pretium nulla. Mauris faucibus sed sapien in tempor. Nunc faucibus ex non enim vestibulum, vitae hendrerit nisi dignissim. Fusce dapibus lorem nec metus viverra, vitae finibus mi fringilla. Praesent commodo velit a maximus tincidunt. Nam lacinia vitae nulla non dignissim. Integer ante ipsum, mattis sit amet eleifend quis, feugiat non sapien. Nulla vel justo ac orci sagittis dapibus ut vitae dui. Pellentesque quis nisi magna.<br><br>In venenatis nisi risus, ac tincidunt lectus eleifend eu. Phasellus condimentum in dolor id viverra. Vestibulum risus orci, dapibus a turpis vitae, pharetra aliquam ex. Morbi vehicula metus erat, eget placerat ex elementum quis. Etiam vestibulum lorem vel tortor lobortis, eu eleifend nisi sagittis. Donec id elit et dui condimentum aliquet et sit amet elit. Ut vulputate, ipsum ut commodo feugiat, quam tellus posuere nunc, nec porttitor nibh urna vitae neque. Donec feugiat molestie lectus, ut posuere dui sagittis a. Duis placerat dui a leo sagittis, quis fringilla lacus eleifend. Aliquam efficitur tincidunt lorem et lobortis. Curabitur non metus sit amet quam blandit tincidunt. Suspendisse aliquam tempus ante. Donec finibus odio nisl. Integer congue ex et est cursus bibendum et a enim.<br><br>
+                Aliquam quis neque risus. Curabitur rutrum, ante semper rhoncus tincidunt, enim mi tristique elit, at vestibulum purus urna eget nisi. Fusce luctus arcu a nibh interdum ultrices. Sed ac urna aliquam, porttitor sem sed, aliquam eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam ac vehicula ex. Fusce ac ultrices nisl, vitae finibus orci. Aenean in porta orci.<br><br>Integer sed accumsan risus. Quisque accumsan nec ante sit amet vulputate. Etiam consequat augue vel ullamcorper maximus. Nulla tincidunt suscipit ullamcorper. Donec quis blandit enim. Curabitur vitae elit a erat malesuada posuere id et ipsum. Sed rutrum fermentum sollicitudin. In malesuada massa nulla, vel euismod metus dignissim vitae. Vivamus ut nunc est. Praesent sit amet iaculis dui, id lobortis urna. Nam ut facilisis orci. Duis tincidunt velit vestibulum massa laoreet scelerisque. Duis massa justo, accumsan ac feugiat sit amet, tempor vel mauris. Curabitur a eros elit. Aliquam condimentum at neque sed venenatis.<br><br>Nullam in sem cursus, interdum purus et, eleifend nibh. Donec faucibus arcu eu est accumsan congue. Phasellus maximus odio justo, id semper massa congue vitae. Nullam vitae elit ut dui commodo molestie sit amet eu nibh. Quisque pharetra tempus neque, vel eleifend sapien maximus at. Vivamus iaculis eu nibh laoreet molestie. Duis lacinia congue tortor et cursus. Nullam egestas urna nibh, non gravida nunc molestie blandit. Aenean sed dictum nisi. Donec id erat dignissim, laoreet tortor id, sodales leo. Nulla dignissim vestibulum metus, at facilisis ligula consequat vitae. Vestibulum sed consectetur augue.</p>
+            <p class="p-posted-by">Posted by: {Peter}  Date: {04/08/1954}</p>
+
+            </div>
+
+            <div class="form-button-section">
+                <div class="form-button">
+                    <form action="/hero_comment" method="get">
+                        <button class="button comment-button" type="submit">COMMENT</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- COMMENTS SECTION: If Comments available, load the Comments -->
+             
+            <% if (locals.displayComments == "") { %>
+                <!-- Do Nothing -->
+            <% } else { %>
+                <h2 class="h2-comments" >Comments</h2>
+
+                <% displayComments.forEach((displayComment)=> { %>
+                    <p class="comment" ><%= displayComment %></p>
+                    <p class="comment-posted-by">Posted by: {<%= displayAuthor %>} Date: {<%= displayDate %>}</p>
+                    <% }) %>
+
+            <% }; %>
+
+
+            <!-- COMMENTS FORM: If Comments button pressed, load the Comments Form -->
+
+            <% if (locals.commentAction) { %>
+
+                <div class="comment-section">
+
+                    <h2 class="h2-comments" >Enter your comments below</h2>
+                    <p>Keep it Clean.</p>
+
+                    <form class="form-comment" action="/hero_comment" method="POST">
+
+                        <textarea class="text-area" type="text" name="commentText" placeholder="COMMENTS"></textarea>
+                        <br>
+
+                        <div class="form-button-section">
+                            
+                            <div class="form-button">
+                                <input class="cancel-button" formaction="/post_hero"formmethod="get" type="submit" value="CANCEL">
+                            </div>
+        
+                            <div class="form-button">
+                                <input class="save-button" type="submit" value="SAVE">
+                            </div>
+    
+                        </div>
+    
+                    </form>
+
+
+  
+                </div>
+   
+
+            <% } %>
+
+  
+
+
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Add Footer -->
+<%- include("partials/footer.ejs") %>
+
+

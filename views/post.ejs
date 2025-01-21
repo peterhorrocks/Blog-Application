@@ -1,0 +1,286 @@
+<%- include("partials/header") -%>
+
+<div class="container-top">
+
+    <div class="page-section">
+
+        <div class="page-sub-section">
+
+            <div class="post-page-section">
+               
+
+                <div class="post-page-sub-section-1">
+
+                    <div class="post-page-sub-section-1-image-1">
+
+                        <% console.log("\n** POST.EJS **"); %>
+                        <% console.log("DISPLAY POST"); %>
+                        <img class="img-post" src="<%= postImage %>" >
+
+                    </div>
+
+                    <div class="post-page-sub-section-1-image-2">
+                        <h2 class="post-heading"><%= postHeading %></h2>
+                    </div>
+
+                </div>
+
+                <div class="post-page-sub-section-2">
+
+                    <p> <%= postContent %> </p>
+
+                    <p class="p-posted-by">Posted by: {<%= postAuthor %>}  Date: {<%= postDate %>}</p>
+                    <!-- <p>ID: <%#= postID %></p> -->
+
+                </div>
+
+                <div class="form-button-section">
+
+                    <!-- Disbale DELETE for Featured Posts -->
+                    <% if (postID === 0 || postID === 1) { %>
+
+                        <div class="form-button">
+                            <form action="/posts_comment/<%= postURL %>" method="get">
+                                <button class="button comment-button" type="submit">COMMENT</button>
+                            </form>
+                        </div>
+                        
+                        <div class="form-button">
+                            <form action="/posts_edit/<%= postURL %>" method="get">
+                                <button class="button edit-button" type="submit">EDIT</button>
+                            </form>
+                        </div>
+
+                    <% } else { %>
+
+                        <div class="form-button">
+                            <form action="/posts_comment/<%= postURL %>" method="get">
+                                <button class="button comment-button" type="submit">COMMENT</button>
+                            </form>
+                        </div>
+                        
+                        <div class="form-button">
+                            <form action="/posts_edit/<%= postURL %>" method="get">
+                                <button class="button edit-button" type="submit">EDIT</button>
+                            </form>
+                        </div>
+
+                        <div class="form-button">
+                            <form action="/posts_delete/<%= postURL %>" method="get">
+                                <button class="button delete-button" type="submit">DELETE</button>
+                            </form>
+                        </div>
+
+                    <% }; %>
+
+                </div>
+
+
+            </div>
+                        <%# if (postID > 1) { %>
+                        <%# }; %>
+
+
+            <div class="post-page-continuation-section">
+
+                <!-- COMMENTS SECTION: If Comments available, load the Comments -->
+                <!-- ========================================================== -->
+
+                <% console.log("heading: ", postHeading) %>
+                <% console.log("Display Comments: ", displayComments) %>
+
+                <% if (displayComments) { %>
+                    <% console.log("DISPLAY COMMENTS"); %>
+
+                    <h2 class="h2-comments" >Comments</h2>
+
+                    <% console.log("postComments: ", postComments) %>
+                    <% console.log("postComments[0]: ", postComments[0]) %>
+                    <% console.log("postComments[0].comment: ", postComments[0].postComment) %>
+                    <% console.log("postComments[0].comment.length: ", postComments[0].postComment.length) %>
+                    <% console.log("postComments[0].comment[0]: ", postComments[0].postComment[0]) %>
+                    <%# console.log("postComments[0].comment[0][1]: ", dbComments[0][1].comment[0]) %>
+
+                    <% let tempArray = [] %>
+                    <% tempArray = postComments[0].postComment[0]; %>
+                    <% console.log("Temp Array: ", tempArray); %>
+                    <% console.log("Temp Array Length: ", tempArray.length); %>
+                    <%# console.log(tempArray.length); %>
+                    <% console.log("Temp Array: ", typeof tempArray); %>
+
+                    <% for (i = 0; i < tempArray.length; i++) { %>  
+                        <% console.log("FOR LOOP: ", tempArray[i]) %>
+                        <br>
+                        <p class="comment" ><%= tempArray[i] %></p>
+                        <p class="comment-posted-by">Posted by: {Some suspicious dude or dudette} Date: {<%= postDate %>}</p>
+                        <% } %>
+
+                <% } else { %>
+
+                    <% console.log("No Comments available"); %>
+
+                <% }; %>
+
+
+                <!-- COMMENTS FORM: If COMMENT button pressed, load the COMMENT Form -->
+                <!-- =============================================================== -->
+
+                <% console.log("Comment Action: ", locals.commentAction); %>
+
+                <% if (locals.commentAction) { %>
+                    <% console.log("COMMENT FORM"); %>
+
+                    <div class="comment-section" id="/comment-section">
+
+                        <h2 class="h2-comments" >Enter your comments below</h2>
+                        <p>Keep it Clean.</p>
+
+                        <form class="form-comment" action="/posts_comment/<%= postURL %>" method="post">
+    
+                            <textarea class="text-area" type="text" name="commentText" placeholder="COMMENTS"></textarea>
+                            <br>
+
+                            <div class="form-button-section">
+                            
+                                <div class="form-button">
+                                    <input class="cancel-button" formaction="/posts/<%= postURL %>"formmethod="get" type="submit" value="CANCEL">
+                                </div>
+            
+                                <div class="form-button">
+                                    <input class="save-button" type="submit" value="SAVE">
+                                </div>
+    
+                            </div>
+
+                        </form>
+
+
+                <% } %>
+
+
+
+
+                <!-- EDIT FORM: If EDIT button pressed, load the EDIT Form -->
+                <!-- ===================================================== -->
+
+                <% console.log("Edit Action: " + locals.editAction); %>
+
+                <% if (locals.editAction) { %>
+                    <% console.log("EDIT FORM"); %>
+
+                    <% console.log("Heading: ", postHeading); %>
+                    <% console.log("Contents: ", postContent.substring(0, 30) + "..."); %>
+                    <% console.log("postURL: ", postURL); %>
+
+                    <div class="edit-section">
+
+                        <h2 class="h2-comments" >Makes Changes in the form below</h2>
+
+
+                        <form class="form-comment" name="edit-form" action="/posts_edit/<%= postURL %>" method="post" enctype="multipart/form-data">
+
+                            <!-- Text Replacement-->
+                            <input class="form-input" type="text" name="formPostHeading" value="<%= postHeading %>"><br><br>
+                            <textarea class="text-area" type="text" name="formPostContents"><%= postContent %></textarea> <br><br>
+
+                            <!-- Image Upload--> 
+                            <label class="image-upload" for="image">Replace Image?</label>
+                            <input class="image-upload" type="file" id="formPostImage" name="formPostImage" onChange="getoutput()" accept="image/png, image/jpg, image/jpeg" placeholder="image.jpg"><br><br>
+
+                            <input class="output-file" id="outputfile" type="text" name="outputfile">
+                            <input class="extension" id="extension" type="text" name="extension">
+
+                            <div class="form-button-section">
+                            
+                                <div class="form-button">
+                                    <input class="cancel-button" formaction="/posts/<%= postURL %>"formmethod="get" type="submit" value="CANCEL">
+                                </div>
+            
+                                <div class="form-button">
+                                    <input class="save-button" type="submit" value="SAVE">
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                        <!-- Access the name of the image file -->
+                        <script>
+                            function getFile(filePath) {
+                                return filePath.substr(filePath.lastIndexOf('\\') + 1).split('.')[0];
+                            }
+                            function getoutput() {
+                                outputfile.value = getFile(formPostImage.value);
+                                extension.value = formPostImage.value.split('.')[1];
+                            }
+                        </script>
+                        
+
+                    </div>
+
+
+                <% } %>
+
+
+                <!-- DELETE SECTION: If DELETE button pressed, confirm DELETE -->
+                <!-- ======================================================== -->
+
+                <% console.log("heading: ", postHeading) %>
+                <% console.log("Display Delete: ", locals.displayDelete) %>
+
+                <% if (locals.displayDelete) { %>
+                    <% console.log("DISPLAY COMMENTS"); %>
+
+                    <h2 class="h2-comments">Confirm Post Deletion</h2>
+
+                
+                
+                    <div class="form-button-section">
+                            
+                        <div class="form-button">
+                            <form action="/" method="get">
+                                <button class="button cancel-button" type="submit">CANCEL</button>
+                            </form>
+                            </div>
+    
+                        <div class="form-button">
+                            <form action="/posts_delete/<%= postURL %>" method="post">
+                                <button class="button delete-button" type="submit">DELETE</button>
+                            </form>
+                        </div>
+    
+    
+    
+                    </div>
+    
+    
+
+
+
+
+                    <% } else { %>
+
+                    <% console.log("Delete Abandoned"); %>
+
+                <% }; %>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- <script>
+
+    //document.forms["edit-form"].elements["formPostHeading"].value = "Trying to find out how to pre-populate this field";
+    document.forms["edit-form"].elements["formPostHeading"].value = "This is my Heading";
+    document.forms["edit-form"].elements["formPostContents"].value = "I have a script file in this page, but cannot get to to receice vales from index.ejs";
+</script>
+-->
+
+
+<%- include("partials/footer") -%>
