@@ -120,15 +120,9 @@ function sensibleURL(reformatString) {
 
 app.get("/", (req, res) => {
     console.log("\n** GET Home Page **")
-    //console.log(posts);
-
-    //posts.forEach(function(post) {
-        //console.log(post);
-    //});
 
     // Also, redirect from Create Post
     res.render("index.ejs", {
-        //{key: value}
         postsKey: posts,
         postDate: currentDate,
     });
@@ -138,9 +132,6 @@ app.get("/", (req, res) => {
 
 app.get("/post_hero", (req, res) => {
     console.log("\n**GET Hero **")
-
-    console.log("Date: ", currentDate);
-    console.log("Author: ", userName);
 
     res.render("post_hero.ejs", {
         commentAction: false,
@@ -154,9 +145,6 @@ app.get("/post_hero", (req, res) => {
 app.get("/hero_comment", (req, res) => {
     console.log("\n** GET Hero Comment **")
 
-    console.log("Date: ", currentDate);
-    console.log("Author: ", userName);
-
     res.render("post_hero.ejs", {
         commentAction: true,
         displayDate: currentDate,
@@ -168,22 +156,26 @@ app.get("/hero_comment", (req, res) => {
 
 app.get("/create_post", (req, res) => {
     console.log("\n** GET Create Post **")
+
     res.render("create_post.ejs");
 });
 
 
 app.get("/about", (req, res) => {
     console.log("\n** GET About Page **")
+
     res.render("about.ejs");
 });
 
 app.get("/contact", (req, res) => {
     console.log("\nG** ET Contact Page **")
+
     res.render("contact.ejs");
 });
 
 app.get("/archive", (req, res) => {
     console.log("\n** GET Archive Page **")
+
     res.render("archive.ejs");
 });
 
@@ -194,34 +186,18 @@ app.get("/posts/:postName", (req, res) => {
 
     let i = 0;
     let requestedHeading = req.params.postName;
-    //requestedHeading = sensibleURL(requestedHeading);
-    console.log("requestedHeading: ", requestedHeading);
     
     for (i = 0; i < posts.length; i++) {
-        //let tempHeading = post.heading;
-        //tempHeading = sensibleURL(tempHeading);
 
-        //console.log(posts[0]);
-        console.log("posts[i].dbURL: ", posts[i].dbURL);
         if (posts[i].dbURL === requestedHeading) {
-            //console.log("Match found!");
-            //console.log("post.postURL: ", posts[i].dbURL);
-            //console.log("post.postComments: ", posts[i].dbComments);
-            //console.log("post.postComments.comment: ", posts[i].dbComments[0].dbComment);
 
             let commentText = posts[i].dbComments[0].dbComment;
-
-            //console.log("Post Comments: ", posts[i].dbComments[0].dbComment);
-            //if (post.postComments.comment == "[ null ]") {
 
             if (posts[i].dbComments[0].dbComment.length === 0) {
                 commentsDisplay = false;
             } else {
                 commentsDisplay = true;
             }
-
-            //console.log("commentsDisplay: ", commentsDisplay);
-            //console.log("posts[i].dbContent: ", posts[i].dbContent);
 
             res.render("post.ejs", {
                 displayComments: commentsDisplay,
@@ -251,24 +227,18 @@ app.get("/posts/:postName", (req, res) => {
 app.get("/posts_comment/:postName", function(req, res) {
     console.log("\n** GET Posts COMMENTS: Postname **")
 
-    //console.log(req.params.postName);
     let requestedHeading = req.params.postName;
 
     posts.forEach(function(post) {
 
-        //console.log(post.postURL);
-
         if (post.dbURL === requestedHeading) {
             console.log("Match found!");
-            //console.log("Posts: " + posts);
 
-            console.log("Post Comments: ", post.dbComments[0].dbComment);
             if (post.dbComments[0].dbComment.length === 0) {
                 commentsDisplay = false;
             } else {
                 commentsDisplay = true;
             }
-            console.log("commentsDisplay: ", commentsDisplay);
 
             res.render("post.ejs", {
                 displayComments: commentsDisplay,
@@ -295,26 +265,18 @@ app.get("/posts_comment/:postName", function(req, res) {
 app.get("/posts_edit/:postName", function(req, res) {
     console.log("\n** GET Posts EDIT: Postname **")
 
-    //console.log(req.params.postName);
     let requestedHeading = req.params.postName;
 
     posts.forEach(function(post) {
 
-        //console.log(post.postURL);
-
         if (post.dbURL === requestedHeading) {
             console.log("Match found!");
-            //console.log("Posts: " + posts);
 
-            console.log("Post Comments: ", post.dbComments[0].dbComment);
             if (post.dbComments[0].dbComment.length === 0) {
                 commentsDisplay = false;
             } else {
                 commentsDisplay = true;
             }
-            console.log("commentsDisplay: ", commentsDisplay);
-
-
 
             res.render("post.ejs", {
                 displayComments: commentsDisplay,
@@ -342,24 +304,18 @@ app.get("/posts_edit/:postName", function(req, res) {
 app.get("/posts_delete/:postName", function(req, res) {
     console.log("\n** GET Posts DELETE: Postname **")
 
-    //console.log(req.params.postName);
     let requestedHeading = req.params.postName;
 
     posts.forEach(function(post) {
 
-        //console.log(post.postURL);
-
         if (post.dbURL === requestedHeading) {
             console.log("Match found!");
-            //console.log("Posts: " + posts);
 
-            console.log("Post Comments: ", post.dbComments[0].dbComment);
             if (post.dbComments[0].dbComment.length === 0) {
                 commentsDisplay = false;
             } else {
                 commentsDisplay = true;
             }
-
 
             res.render("post.ejs", {
                 displayComments: commentsDisplay,
@@ -382,11 +338,6 @@ app.get("/posts_delete/:postName", function(req, res) {
 });
 
 
-
-
-
-
-
 // POST REQUESTS
 // =============
 
@@ -401,7 +352,6 @@ app.post("/hero_comment", (req, res) => {
     }
 
     heroComments.push(commentText);
-    console.log(heroComments);
 
     res.render("post_hero.ejs", {
         commentAction: false,
@@ -417,7 +367,6 @@ app.post("/hero_comment", (req, res) => {
 app.post("/posts_comment/:postName", (req, res) => {
     console.log("\n** POST Post Comment **")
 
-    //console.log(req.params.postName);
     let requestedHeading = req.params.postName;
 
     console.log("req.body.commentText: ", req.body.commentText);
@@ -432,29 +381,18 @@ app.post("/posts_comment/:postName", (req, res) => {
 
     let i = 0;
     for (i = 0; i < posts.length; i++) {
-        //posts.forEach(function(post) {
-
-        //console.log(post.postURL);
 
         if (posts[i].dbURL === requestedHeading) {
-            console.log("indexJS POST Post Comment: Match found!");
 
-            console.log("posts[i].postComments[0].comment: ", posts[i].dbComments[0].dbComment);
             posts[i].dbComments[0].dbComment.push(commentBody);
 
             let commentBodyS = posts[i].dbComments[0].dbComment;
-
-            console.log("posts[i].postComments[0].comment: ", posts[i].dbComments[0].dbComment)
-            console.log("post.heading: ", posts[i].dbHeading);
-            console.log("post.postComments: ", posts[i].dbComments);
-            console.log("post.postComments.comment: ", posts[i].dbComments[0].dbComment);
 
             if (posts[i].dbComments === "[]") {
                 commentsDisplay = false;
             } else {
                 commentsDisplay = true;
             }
-            console.log("commentsDisplay: ", commentsDisplay);
     
             res.render("post.ejs", {
                 commentAction: false,
@@ -483,11 +421,8 @@ app.post("/posts_comment/:postName", (req, res) => {
 // ======================
 app.post("/posts_edit/:postName", upload.single("formPostImage"), (req, res) => {
     
-    console.log("\n** POST Edit Update Post **")
-
     let requestedHeading = req.params.postName;
 
-    console.log("Process Image");
     // Multer crashes if there is no image, so the output file and extension
     // are extracted from the form, in order to bypass the multer facility.
     let imageFile = req.body.outputfile + "." + req.body.extension;
@@ -505,29 +440,13 @@ app.post("/posts_edit/:postName", upload.single("formPostImage"), (req, res) => 
       
     // Format the image path for the EJS template
     var imageSource = "/images/" + imageFile;
-    //console.log("Image Source" + imageSource)
 
     //Access the Array
 
-    console.log(" ");
-    console.log("req.body.heading: ", req.body.heading);
-    console.log("req.body.formPostHeading: ", req.body.formPostHeading);
-    console.log("req.body.postURL: ", req.body.postURL);
-    console.log("req.body.outputfile: ", req.body.outputfile);
-
-    console.log("requestedHeading: ", requestedHeading);
     for (i = 0; i < posts.length; i++) {
-        console.log(i + ": " + posts[i].dbURL);
-    };
-
-    console.log("START OF FOR LOOP");
-
-    for (i = 0; i < posts.length; i++) {
-        console.log("posts[i].dbURL: ", posts[i].dbURL);
 
         if (requestedHeading === posts[i].dbURL) {
             console.log("Match found!");
-            console.log(posts[i].dbURL);
 
             let tempHeading = "";
             if (req.body.formPostHeading === "") {
@@ -549,11 +468,6 @@ app.post("/posts_edit/:postName", upload.single("formPostImage"), (req, res) => 
                 tempContents = req.body.formPostContents;
             }
         
-            //console.log("req.body.formPostHeading", req.body.formPostHeading);
-            //console.log("req.body.formPostContents", req.body.formPostContents);
-            //console.log("req.body.formPostContents", formHeading);
-        
-
             posts[i].dbHeading = req.body.formPostHeading;
             posts[i].dbContent = req.body.formPostContents;
             posts[i].dbURL = formHeading;
@@ -563,19 +477,6 @@ app.post("/posts_edit/:postName", upload.single("formPostImage"), (req, res) => 
                 posts[i].dbImage = imageSource;
             };
 
-            //const postsKey = {
-                //postID: postNumber,
-                //heading: postHeading,
-                //content: postContents,
-                //postURL: formHeading,
-                //postImage: imageSource,
-                //postComments: [
-                    //{comment:
-                        //[]
-                    //}]
-            //};
-        
-       
             // Redirect to Home Page GET route
             res.redirect("/");
 
@@ -585,8 +486,6 @@ app.post("/posts_edit/:postName", upload.single("formPostImage"), (req, res) => 
 
 
 });
-
-
 
 // POST Login Form
 // ===============
@@ -618,7 +517,6 @@ app.post("/login", (req, res) => {
     // Redirect to Home Page GET route
     res.redirect("/");
 
-
 });
 
 // POST Create Post Form
@@ -643,7 +541,6 @@ app.post("/create_post", upload.single("formPostImage"), (req, res) => {
       
     // Format the image path for the EJS template
     var imageSource = "/images/" + imageFile;
-    console.log("Image Source" + imageSource)
 
     let tempHeading = "";
     if (req.body.formPostHeading === "") {
@@ -682,8 +579,6 @@ app.post("/create_post", upload.single("formPostImage"), (req, res) => {
 
     postNumber++,
 
-    //console.log("Posts: ", postsKey);
-
     // Redirect to Home Page GET route
     res.redirect("/");
 
@@ -699,91 +594,27 @@ app.post("/posts_delete/:postName", function(req, res) {
 
     //console.log(req.params.postName);
     let requestedHeading = req.params.postName;
-    console.log("requestedHeading: ", requestedHeading)
-    console.log("URL: ", req.body.postURL);
 
     let tempArray = [];
 
-    console.log("** UPDATING ARRAY **");
     // UPDATING ARRAY
     let newID = 0;
     for (i = 0; i < posts.length; i++) {
 
         if (posts[i].dbURL !== requestedHeading) {
             posts[i].dbID = newID;
-            console.log(i)
-            console.log("ID: ", posts[i].dbID)
-            console.log("Heading: ", posts[i].dbHeading)
-            console.log("URL: ", posts[i].dbURL)
-            //posts[i].dbContent = posts[i].dbContent;
             tempArray.push(posts[i]);
             newID++;
         };
 
-
     };
-
-    console.log("** POSTS **");
-    console.log(posts);
-    console.log("** TEMP **");
-    console.log(tempArray);
 
     posts = tempArray;
-
-    // Checking Array intact.
-    console.log("** CHECKING ARRAY INTACT **");
-    for (i = 0; i < posts.length; i++) {
-        console.log("Loop: ", i);
-        console.log("Loop: ID", i, ": ",  posts[i].dbID);
-        console.log("Loop: Author", i, ": ",  posts[i].dbAuthor);
-        console.log("Loop: Heading", i, ": ", posts[i].dbHeading);
-        console.log("Loop: Content", i, ": ", posts[i].dbContent.substring(0, 50));
-        console.log("Loop: URL", i, ": ", posts[i].dbURL);
-        console.log("Loop: Image", i, ": ", posts[i].dbImage);
-        console.log("Loop: Comments", i, ": ", posts[i].dbComments[0].dbComment);
-    };
 
     // Redirect to Home Page GET route
     res.redirect("/");
 
-
-/*
-    posts.forEach(function(post) {
-
-        //console.log(post.postURL);
-
-        if (post.postURL === requestedHeading) {
-            console.log("Match found!");
-            //console.log("Posts: " + posts);
-
-            console.log("Post Comments: ", post.postComments[0].comment);
-            if (post.postComments[0].comment.length === 0) {
-                commentsDisplay = false;
-            } else {
-                commentsDisplay = true;
-            }
-
-
-            res.render("post.ejs", {
-                displayComments: commentsDisplay,
-                displayDelete: true,
-                heading: post.heading,
-                content: post.content,
-                postURL: post.postURL,
-                postImage: post.postImage,
-                postComments: [
-                    {comment:
-                        [post.postComments[0].comment]
-                    }]
-            })
-
-        }
-    });
-    */
 });
-
-
-
 
 
 
@@ -791,5 +622,4 @@ app.post("/posts_delete/:postName", function(req, res) {
 // =============================
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
-    console.log("************************************ SERVING RUNNING ************************************");
 });
