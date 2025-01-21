@@ -13,8 +13,6 @@
 
                     <div class="post-page-sub-section-1-image-1">
 
-                        <% console.log("\n** POST.EJS **"); %>
-                        <% console.log("DISPLAY POST"); %>
                         <img class="img-post" src="<%= postImage %>" >
 
                     </div>
@@ -30,7 +28,6 @@
                     <p> <%= postContent %> </p>
 
                     <p class="p-posted-by">Posted by: {<%= postAuthor %>}  Date: {<%= postDate %>}</p>
-                    <!-- <p>ID: <%#= postID %></p> -->
 
                 </div>
 
@@ -77,8 +74,6 @@
 
 
             </div>
-                        <%# if (postID > 1) { %>
-                        <%# }; %>
 
 
             <div class="post-page-continuation-section">
@@ -86,30 +81,14 @@
                 <!-- COMMENTS SECTION: If Comments available, load the Comments -->
                 <!-- ========================================================== -->
 
-                <% console.log("heading: ", postHeading) %>
-                <% console.log("Display Comments: ", displayComments) %>
-
                 <% if (displayComments) { %>
-                    <% console.log("DISPLAY COMMENTS"); %>
 
                     <h2 class="h2-comments" >Comments</h2>
 
-                    <% console.log("postComments: ", postComments) %>
-                    <% console.log("postComments[0]: ", postComments[0]) %>
-                    <% console.log("postComments[0].comment: ", postComments[0].postComment) %>
-                    <% console.log("postComments[0].comment.length: ", postComments[0].postComment.length) %>
-                    <% console.log("postComments[0].comment[0]: ", postComments[0].postComment[0]) %>
-                    <%# console.log("postComments[0].comment[0][1]: ", dbComments[0][1].comment[0]) %>
-
                     <% let tempArray = [] %>
                     <% tempArray = postComments[0].postComment[0]; %>
-                    <% console.log("Temp Array: ", tempArray); %>
-                    <% console.log("Temp Array Length: ", tempArray.length); %>
-                    <%# console.log(tempArray.length); %>
-                    <% console.log("Temp Array: ", typeof tempArray); %>
 
                     <% for (i = 0; i < tempArray.length; i++) { %>  
-                        <% console.log("FOR LOOP: ", tempArray[i]) %>
                         <br>
                         <p class="comment" ><%= tempArray[i] %></p>
                         <p class="comment-posted-by">Posted by: {Some suspicious dude or dudette} Date: {<%= postDate %>}</p>
@@ -125,10 +104,7 @@
                 <!-- COMMENTS FORM: If COMMENT button pressed, load the COMMENT Form -->
                 <!-- =============================================================== -->
 
-                <% console.log("Comment Action: ", locals.commentAction); %>
-
                 <% if (locals.commentAction) { %>
-                    <% console.log("COMMENT FORM"); %>
 
                     <div class="comment-section" id="/comment-section">
 
@@ -163,19 +139,11 @@
                 <!-- EDIT FORM: If EDIT button pressed, load the EDIT Form -->
                 <!-- ===================================================== -->
 
-                <% console.log("Edit Action: " + locals.editAction); %>
-
                 <% if (locals.editAction) { %>
-                    <% console.log("EDIT FORM"); %>
-
-                    <% console.log("Heading: ", postHeading); %>
-                    <% console.log("Contents: ", postContent.substring(0, 30) + "..."); %>
-                    <% console.log("postURL: ", postURL); %>
 
                     <div class="edit-section">
 
                         <h2 class="h2-comments" >Makes Changes in the form below</h2>
-
 
                         <form class="form-comment" name="edit-form" action="/posts_edit/<%= postURL %>" method="post" enctype="multipart/form-data">
 
@@ -225,15 +193,9 @@
                 <!-- DELETE SECTION: If DELETE button pressed, confirm DELETE -->
                 <!-- ======================================================== -->
 
-                <% console.log("heading: ", postHeading) %>
-                <% console.log("Display Delete: ", locals.displayDelete) %>
-
                 <% if (locals.displayDelete) { %>
-                    <% console.log("DISPLAY COMMENTS"); %>
 
                     <h2 class="h2-comments">Confirm Post Deletion</h2>
-
-                
                 
                     <div class="form-button-section">
                             
@@ -249,13 +211,7 @@
                             </form>
                         </div>
     
-    
-    
                     </div>
-    
-    
-
-
 
 
                     <% } else { %>
@@ -273,14 +229,6 @@
 
 </div>
 
-
-<!-- <script>
-
-    //document.forms["edit-form"].elements["formPostHeading"].value = "Trying to find out how to pre-populate this field";
-    document.forms["edit-form"].elements["formPostHeading"].value = "This is my Heading";
-    document.forms["edit-form"].elements["formPostContents"].value = "I have a script file in this page, but cannot get to to receice vales from index.ejs";
-</script>
--->
 
 
 <%- include("partials/footer") -%>

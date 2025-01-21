@@ -5,15 +5,12 @@
 
     <div class="container-top">
 
-        <%= console.log("\n** INDEX.EJS **"); %>
-
         <div class="hero">
             <div class="sub-hero-1">
                 <h1>A 1950s Blog Post</h1>
                 <p class="p-header">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tortor eros, aliquet eu dui id, tincidunt sagittis dolor. Donec tristique felis nec consectetur tempor. Vivamus sit amet aliquam magna, sit amet euismod eros. Etiam non sem mollis, aliquet leo nec, laoreet odio.</p>
                 <p class="p-posted-by">Posted by: {Peter}  Date: {04/08/1954}</p>
                 <a href="/post_hero"><button type="submit" class="button continue-button">CONTINUE READING</button></a>
-                <!-- <p class="p-notation">This is a Static post</p> -->
             </div>
             <div class="sub-hero-2">
                 <img class="img-hero" src="/images/adverts-old-vintage-advertisements-posters-labels-40.jpg">
@@ -28,8 +25,6 @@
 
                 <% for (i = 0; i <= 1; i++) { %>
 
-                    <% console.log("Index:" + i + ": " + postsKey[i].dbURL) %>
-
                     <div class="sub-feature">
                         <div class="feature-contents-1">
 
@@ -37,8 +32,6 @@
                             <p><%= postsKey[i].dbContent.substring(0, 400) + "..." %></p>
                             <p class="p-posted-by">Posted by: {<%= postsKey[i].dbAuthor %>}  Date: {<%= postDate %>}</p>
                             <a href="/posts/<%= postsKey[i].dbURL %>"><button type="submit" class="button continue-button">CONTINUE READING</button></a>
-                            <!-- <p class="p-notation">This is a preloaded Dynamic post</p> -->
-                            <!-- <p>ID: <%#= postsKey[i].dbID %></p> -->
                         </div>
 
                         <div class="feature-contents-2">
@@ -58,8 +51,6 @@
                             <p><%= postsKey[i].dbContent.substring(0, 400) + "..." %></p>
                             <p class="p-posted-by">Posted by: {<%= postsKey[i].dbAuthor %>}  Date: {<%= postDate %>}}</p>
                             <a href="/posts/<%= postsKey[i].dbURL %>"><button type="submit" class="button continue-button">CONTINUE READING</button></a>
-                            <!-- <p class="p-notation">This is a preloaded Dynamic post</p> -->
-                            <!-- <p>ID: <%#= postsKey[i].dbID %></p> -->
 
                         </div>
 
@@ -84,17 +75,11 @@
 
         <div class="left-panel">
 
-            <%# console.log("postKeys: ", locals.postsKey); %>
-            <% console.log("LOAD DYNAMIC POSTS"); %>
-
             <!-- DYNAMICALLY LOAD POSTS -->
             <% if (locals.postsKey !== "") { %>
 
                 <% for (i = 2; i < postsKey.length; i++) { %>
 
-
-                    <!-- Alternative Background Colour -->
-                    <!-- If ID even number, apply background, else leave blank -->
 
                     <!-- Flex Row -->
                     <% if (postsKey[i].dbID % 2 === 0) { %>
@@ -104,14 +89,10 @@
                     <% }; %>
                             <div class="sub-post-1">
 
-                                <% console.log("Index:" + i + "URL " + postsKey[i].dbURL) %>
-                                <% console.log("Index:" + i + "Heading " + postsKey[i].dbHeading) %>
                                 <h2><%= postsKey[i].dbHeading %></h2>
                                 <p><%= postsKey[i].dbContent.substring(0, 300) + "..." %></p>
                                 <p class="p-posted-by">Posted by: {<%= postsKey[i].dbAuthor %>}  Date: {<%= postDate %>}</p>
                                 <a href="/posts/<%= postsKey[i].dbURL %>"><button type="submit" class="button continue-button">CONTINUE READING</button></a>
-                                <!-- <p class="p-notation">This is a preloaded Dynamic post</p> -->
-                                <!-- <p>ID: <%#= postsKey[i].dbID %></p> -->
                             </div>
 
                             <div class="sub-post-2">
@@ -145,10 +126,6 @@
                         </div>
 
                     </div> -->
-
-
-
-
 
 
                     <% } %>
